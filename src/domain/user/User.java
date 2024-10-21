@@ -4,13 +4,22 @@ public class User {
     private final UserId id;
     private UserName name;
 
-    public User(UserId id, UserName name) {
-        if (id == null) throw new IllegalArgumentException("id cannot be null");
-        if (name == null) throw new IllegalArgumentException("name cannot be null");
+    // 객체 생성을 통제하기 위해 팩토리 패턴으로 User를 생성하도록 결정
+    // 이때 생성자를 아예 만들지 않으면 자바 컴파일러는 자동으로 기본 생성자*를 생성하여
+    // 아무나 기본 생성자를 통해 User를 생성할 수 있게 됨.
+    // 따라서 생성자를 반드시 만들고, private으로 설정하는 것이 바람직함.
+    // * 기본 생성자는 매개변수가 없는 생성자로 필드를 null로 초기화함.
+    private User(UserId id, UserName name) {
         this.id = id;
         this.name = name;
     }
 
+    // 정적 팩토리 메소드
+    // static : 인스턴스가 없을 때도 이 메소드를 호출할 수 있게 한다.
+    // final : 객체를 immutable 하게 관리한다.
+    public static final User create(UserId id, UserName name) {
+        return new User(id, name);
+    }
     public UserId getId() {
         return id;
     }
