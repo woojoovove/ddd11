@@ -1,4 +1,4 @@
-package domain;
+package domain.circle;
 
 public class CircleName {
     private final String value;
