@@ -47,7 +47,7 @@ public class CircleApplicationService {
         User user = userApplicationService.findOrNull(joinCommand.getUserId());
         if (user == null) throw new IllegalArgumentException("user not found");
         List<User> member = circle.getMembers();
-        if (member.size()>29) {
+        if (member.size()>=30) {
             throw new IllegalStateException("정원 초과");
         }
         member.add(user);
