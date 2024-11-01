@@ -11,7 +11,7 @@ public class UserApplicationService {
         this.userFactory = userFactory;
     }
 
-    public User find(UserId userId) {
+    public User findOrNull(UserId userId) {
         return userRepository.findOrNull(userId);
     }
 }
