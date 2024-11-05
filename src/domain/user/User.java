@@ -10,6 +10,8 @@ public class User {
     // 따라서 생성자를 반드시 만들고, private으로 설정하는 것이 바람직함.
     // * 기본 생성자는 매개변수가 없는 생성자로 필드를 null로 초기화함.
     private User(UserId id, UserName name) {
+        if (id == null) throw new IllegalArgumentException("id cannot be null");
+        if (name == null) throw new IllegalArgumentException("name cannot be null");
         this.id = id;
         this.name = name;
     }
