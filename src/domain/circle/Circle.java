@@ -10,7 +10,7 @@ public class Circle {
     private User leader;
     private List<User> members;
 
-    public Circle(CircleId id, CircleName name, User leader, List<User> members) {
+    private Circle(CircleId id, CircleName name, User leader, List<User> members) {
         if (id == null) throw new IllegalArgumentException("id cannot be null");
         if (name == null) throw new IllegalArgumentException("name cannot be null");
         if (leader == null) throw new IllegalArgumentException("leader cannot be null");
@@ -19,6 +19,10 @@ public class Circle {
         this.name = name;
         this.leader = leader;
         this.members = members;
+    }
+
+    static Circle create(CircleId id, CircleName name, User leader, List<User> members) {
+        return new Circle(id, name, leader, members);
     }
 
     public CircleId getId() {
