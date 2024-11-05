@@ -29,26 +29,12 @@ public class Circle {
         return name;
     }
 
-    public void setName(CircleName name) {
-        if (name == null) throw new IllegalArgumentException("name cannot be null");
-        this.name = name;
-    }
-
     public User getLeader() {
         return leader;
-    }
-
-    public void setLeader(User leader) {
-        if (leader == null) throw new IllegalArgumentException("leader cannot be null");
-        this.leader = leader;
     }
 
     public List<User> getMembers() {
         return members;
     }
 
-    public void setMembers(List<User> members) {
-        if (members == null) throw new IllegalArgumentException("members cannot be null");
-        this.members = members;
-    }
 }

@@ -23,7 +23,4 @@ public class InMemoryUserRepository implements IUserRepository {
         return store.getOrDefault(userId, null);
     }
 
-    private User cloneUser(User user) {
-        return User.create(user.getId(), user.getName());
-    }
 }
