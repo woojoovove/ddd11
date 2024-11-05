@@ -39,4 +39,8 @@ public class User {
         if (name == null) throw new IllegalArgumentException("name cannot be null");
         this.name = name;
     }
+
+    public static User cloneUser(User user) {
+        return create(user.getId(), user.getName());
+    }
 }
