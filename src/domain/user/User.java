@@ -17,7 +17,8 @@ public class User {
     // 정적 팩토리 메소드
     // static : 인스턴스가 없을 때도 이 메소드를 호출할 수 있게 한다.
     // final : 객체를 immutable 하게 관리한다.
-    public static final User create(UserId id, UserName name) {
+    // default : 같은 패키지 내에서만 접근 가능
+    static final User create(UserId id, UserName name) {
         return new User(id, name);
     }
     public UserId getId() {
