@@ -1,4 +1,4 @@
-package domain.circle;
+package circle.domain;
 
 public interface ICircleRepository {
     Circle findByNameOrNull(CircleName circleName);

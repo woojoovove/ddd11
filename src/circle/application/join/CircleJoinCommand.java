@@ -1,7 +1,7 @@
-package application.circle.join;
+package circle.application.join;
 
-import domain.circle.CircleId;
-import domain.user.UserId;
+import circle.domain.CircleId;
+import user.domain.UserId;
 
 public class CircleJoinCommand {
     private final CircleId circleId;

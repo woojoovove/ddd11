@@ -1,6 +1,6 @@
-package application.user;
+package user.application;
 
-import domain.user.*;
+import user.domain.*;
 
 public class UserApplicationService {
     private final IUserRepository userRepository;

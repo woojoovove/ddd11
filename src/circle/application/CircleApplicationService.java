@@ -1,11 +1,14 @@
-package application.circle;
+package circle.application;
 
-import application.circle.create.CircleCreateCommand;
-import application.circle.join.CircleJoinCommand;
-import application.user.UserApplicationService;
-import domain.circle.*;
-import domain.user.IUserRepository;
-import domain.user.User;
+import circle.application.create.CircleCreateCommand;
+import circle.application.join.CircleJoinCommand;
+import circle.domain.Circle;
+import circle.domain.CircleName;
+import circle.domain.ICircleFactory;
+import circle.domain.ICircleRepository;
+import user.application.UserApplicationService;
+import user.domain.IUserRepository;
+import user.domain.User;
 
 import java.util.List;
 

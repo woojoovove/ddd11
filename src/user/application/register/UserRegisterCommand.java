@@ -1,4 +1,4 @@
-package application.user.register;
+package user.application.register;
 
 public class UserRegisterCommand {
     private String userName;

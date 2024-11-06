@@ -1,4 +1,4 @@
-package domain.circle;
+package circle.domain;
 
 import java.util.HashMap;
 import java.util.Map;
