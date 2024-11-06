@@ -23,6 +23,8 @@ public class User {
     static final User create(UserId id, UserName name) {
         return new User(id, name);
     }
+
+    // Getters
     public UserId getId() {
         return id;
     }
