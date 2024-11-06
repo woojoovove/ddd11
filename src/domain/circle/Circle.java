@@ -21,7 +21,7 @@ public class Circle {
         this.members = members;
     }
 
-    static Circle create(CircleId id, CircleName name, User leader, List<User> members) {
+    static final Circle create(CircleId id, CircleName name, User leader, List<User> members) {
         return new Circle(id, name, leader, members);
     }
 
