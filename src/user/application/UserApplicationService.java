@@ -6,6 +6,8 @@ import user.application.register.UserRegisterCommand;
 import user.application.update.UserUpdateCommand;
 import user.domain.*;
 
+import java.util.List;
+
 public class UserApplicationService {
     private final IUserRepository userRepository;
     private final IUserFactory userFactory;
@@ -48,5 +50,7 @@ public class UserApplicationService {
         userRepository.save(user);
     }
 
-
+    public List<UserData> getAll() {
+        return userRepository.findAll().stream().map(UserData::new).toList();
+    }
 }

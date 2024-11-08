@@ -1,6 +1,8 @@
 package user.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryUserRepository implements IUserRepository {
@@ -22,6 +24,11 @@ public class InMemoryUserRepository implements IUserRepository {
     @Override
     public User findOrNull(UserId userId) {
         return store.getOrDefault(userId, null);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return new ArrayList<User>(store.values());
     }
 
 }
