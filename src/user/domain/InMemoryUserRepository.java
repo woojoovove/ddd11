@@ -31,4 +31,9 @@ public class InMemoryUserRepository implements IUserRepository {
         return new ArrayList<User>(store.values());
     }
 
+    @Override
+    public void deleteById(UserId userId) {
+        store.remove(userId);
+    }
+
 }

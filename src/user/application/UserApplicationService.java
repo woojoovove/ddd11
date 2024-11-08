@@ -1,6 +1,7 @@
 package user.application;
 
 import user.application.common.UserData;
+import user.application.delete.UserDeleteCommand;
 import user.application.get.UserGetCommand;
 import user.application.register.UserRegisterCommand;
 import user.application.update.UserUpdateCommand;
@@ -52,5 +53,13 @@ public class UserApplicationService {
 
     public List<UserData> getAll() {
         return userRepository.findAll().stream().map(UserData::new).toList();
+    }
+
+    public void delete(UserDeleteCommand deleteCommand) {
+
+        UserId id = new UserId(deleteCommand.getId());
+        User user = userRepository.findOrNull(id);
+        if (user == null) return;
+        userRepository.deleteById(id);
     }
 }
