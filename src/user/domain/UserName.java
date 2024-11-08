@@ -1,4 +1,4 @@
-package domain.user;
+package user.domain;
 
 public class UserName {
     private final String value;

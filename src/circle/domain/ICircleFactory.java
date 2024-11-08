@@ -1,6 +1,6 @@
-package domain.circle;
+package circle.domain;
 
-import domain.user.User;
+import user.domain.User;
 
 public interface ICircleFactory {
     Circle create(CircleName name, User owner);

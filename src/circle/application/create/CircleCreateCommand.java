@@ -1,7 +1,7 @@
-package application.circle.create;
+package circle.application.create;
 
-import domain.circle.CircleName;
-import domain.user.UserId;
+import circle.domain.CircleName;
+import user.domain.UserId;
 
 public class CircleCreateCommand {
     private final CircleName name;
