@@ -1,6 +1,6 @@
-package circle.domain;
+package com.woojoovove.ddd11.circle.domain;
 
-import user.domain.User;
+import com.woojoovove.ddd11.user.domain.User;
 
 import java.util.List;
 

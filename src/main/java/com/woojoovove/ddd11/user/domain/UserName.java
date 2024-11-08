@@ -1,4 +1,4 @@
-package user.domain;
+package com.woojoovove.ddd11.user.domain;
 
 public class UserName {
     private final String value;

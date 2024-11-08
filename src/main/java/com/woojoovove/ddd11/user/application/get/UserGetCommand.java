@@ -1,4 +1,4 @@
-package user.application.get;
+package com.woojoovove.ddd11.user.application.get;
 
 public class UserGetCommand {
     private String id;

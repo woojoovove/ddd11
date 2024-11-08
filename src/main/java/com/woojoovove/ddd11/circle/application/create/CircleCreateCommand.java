@@ -1,7 +1,7 @@
-package circle.application.create;
+package com.woojoovove.ddd11.circle.application.create;
 
-import circle.domain.CircleName;
-import user.domain.UserId;
+import com.woojoovove.ddd11.circle.domain.CircleName;
+import com.woojoovove.ddd11.user.domain.UserId;
 
 public class CircleCreateCommand {
     private final CircleName name;

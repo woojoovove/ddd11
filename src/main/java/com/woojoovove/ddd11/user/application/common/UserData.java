@@ -1,6 +1,6 @@
-package user.application.common;
+package com.woojoovove.ddd11.user.application.common;
 
-import user.domain.User;
+import com.woojoovove.ddd11.user.domain.User;
 
 public class UserData {
     private String id;

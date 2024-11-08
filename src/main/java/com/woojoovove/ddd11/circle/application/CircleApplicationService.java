@@ -1,14 +1,15 @@
-package circle.application;
+package com.woojoovove.ddd11.circle.application;
 
-import circle.application.create.CircleCreateCommand;
-import circle.application.join.CircleJoinCommand;
-import circle.domain.Circle;
-import circle.domain.CircleName;
-import circle.domain.ICircleFactory;
-import circle.domain.ICircleRepository;
-import user.application.UserApplicationService;
-import user.domain.IUserRepository;
-import user.domain.User;
+
+import com.woojoovove.ddd11.circle.application.create.CircleCreateCommand;
+import com.woojoovove.ddd11.circle.application.join.CircleJoinCommand;
+import com.woojoovove.ddd11.circle.domain.Circle;
+import com.woojoovove.ddd11.circle.domain.CircleName;
+import com.woojoovove.ddd11.circle.domain.ICircleFactory;
+import com.woojoovove.ddd11.circle.domain.ICircleRepository;
+import com.woojoovove.ddd11.user.application.UserApplicationService;
+import com.woojoovove.ddd11.user.domain.IUserRepository;
+import com.woojoovove.ddd11.user.domain.User;
 
 import java.util.List;
 

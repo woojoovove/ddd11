@@ -1,11 +1,11 @@
-package user.application;
+package com.woojoovove.ddd11.user.application;
 
-import user.application.common.UserData;
-import user.application.delete.UserDeleteCommand;
-import user.application.get.UserGetCommand;
-import user.application.register.UserRegisterCommand;
-import user.application.update.UserUpdateCommand;
-import user.domain.*;
+import com.woojoovove.ddd11.user.application.common.UserData;
+import com.woojoovove.ddd11.user.application.delete.UserDeleteCommand;
+import com.woojoovove.ddd11.user.application.get.UserGetCommand;
+import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
+import com.woojoovove.ddd11.user.application.update.UserUpdateCommand;
+import com.woojoovove.ddd11.user.domain.*;
 
 import java.util.List;
 

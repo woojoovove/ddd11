@@ -1,7 +1,7 @@
-package circle.application.join;
+package com.woojoovove.ddd11.circle.application.join;
 
-import circle.domain.CircleId;
-import user.domain.UserId;
+import com.woojoovove.ddd11.circle.domain.CircleId;
+import com.woojoovove.ddd11.user.domain.UserId;
 
 public class CircleJoinCommand {
     private final CircleId circleId;

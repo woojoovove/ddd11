@@ -1,4 +1,4 @@
-package circle.domain;
+package com.woojoovove.ddd11.circle.domain;
 
 public interface ICircleRepository {
     Circle findByNameOrNull(CircleName circleName);

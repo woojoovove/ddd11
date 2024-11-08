@@ -1,4 +1,4 @@
-package user.application.update;
+package com.woojoovove.ddd11.user.application.update;
 
 public class UserUpdateCommand {
     private String id;

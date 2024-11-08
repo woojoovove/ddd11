@@ -1,4 +1,4 @@
-package circle.domain;
+package com.woojoovove.ddd11.circle.domain;
 
 import java.util.HashMap;
 import java.util.Map;

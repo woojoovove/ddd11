@@ -1,4 +1,4 @@
-package user.application.delete;
+package com.woojoovove.ddd11.user.application.delete;
 
 public class UserDeleteCommand {
     private String id;

@@ -1,6 +1,6 @@
-package user.application.get;
+package com.woojoovove.ddd11.user.application.get;
 
-import user.application.common.UserData;
+import com.woojoovove.ddd11.user.application.common.UserData;
 
 public class UserGetResult {
     private UserData userData;
