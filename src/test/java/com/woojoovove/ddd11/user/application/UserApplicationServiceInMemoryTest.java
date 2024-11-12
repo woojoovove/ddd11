@@ -1,25 +1,24 @@
 package com.woojoovove.ddd11.user.application;
 
 import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
-import com.woojoovove.ddd11.user.domain.IUserFactory;
-import com.woojoovove.ddd11.user.domain.IUserRepository;
-import com.woojoovove.ddd11.user.domain.InMemoryUserFactory;
-import com.woojoovove.ddd11.user.domain.InMemoryUserRepository;
+import com.woojoovove.ddd11.user.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class UserApplicationServiceInMemoryTest {
     
     private IUserRepository userRepository;
     private IUserFactory userFactory;
     private UserApplicationService userApplicationService;
+
+    // 단위 테스트로서 의존성은 mock으로 대체
     @BeforeEach
     void setUp() {
-        userRepository = new InMemoryUserRepository();
-        userFactory = new InMemoryUserFactory();
+        userRepository = mock(IUserRepository.class);
+        userFactory = mock(IUserFactory.class);
         userApplicationService = new UserApplicationService(userRepository, userFactory);
     }
 
@@ -40,5 +39,19 @@ public class UserApplicationServiceInMemoryTest {
             userApplicationService.register(registerCommand);
         });
         assertEquals("User name length must be at least 3", exception.getMessage());
+    }
+
+    @Test
+    public void succeedRegisterUserWhenGivenValidInput() {
+        String validInput = "ABC";
+        UserRegisterCommand registerCommand = new UserRegisterCommand(validInput);
+        UserName userName = new UserName(validInput);
+        User mockUser = mock(User.class);
+
+        when(userFactory.create(userName)).thenReturn(mockUser);
+        userApplicationService.register(registerCommand);
+
+        verify(userFactory, times(1)).create(userName);
+        verify(userRepository, times(1)).save(mockUser);
     }
 }
