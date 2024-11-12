@@ -35,9 +35,7 @@ public class UserApplicationServiceInMemoryTest {
         String invalidInput = "AB";
         UserRegisterCommand registerCommand = new UserRegisterCommand(invalidInput);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->{
-            userApplicationService.register(registerCommand);
-        });
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> userApplicationService.register(registerCommand));
         assertEquals("User name length must be at least 3", exception.getMessage());
     }
 
