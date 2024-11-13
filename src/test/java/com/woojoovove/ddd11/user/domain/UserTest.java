@@ -47,5 +47,15 @@ public class UserTest {
         assertEquals("name cannot be null", exception.getMessage());
     }
 
+    @Test
+    public void succeedChangeNameWhenGivenNotNull() {
+        id = new UserId("id");
+        name = new UserName("ABC");
+        User user = User.create(id, name);
+        UserName newUserName = new UserName("newUser");
+        user.changeName(newUserName);
+        assertEquals(newUserName, user.getName());
+    }
+
 
 }
