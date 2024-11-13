@@ -18,6 +18,14 @@ public class UserTest {
         assertEquals("id cannot be null", exception.getMessage());
     }
 
+    @Test
+    public void failCreateUserWhenGivenNullName() {
+        id = new UserId("id");
+        name = null;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> User.create(id, name));
+        assertEquals("name cannot be null", exception.getMessage());
+    }
+
     public void succeedCreateUserWhenGivenNotNull() {
 
     }
