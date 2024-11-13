@@ -37,7 +37,15 @@ public class UserTest {
         assertEquals(name, user.getName());
     }
 
-    public void failChangeNameWhenGivenNull() {}
-    public void succeedChangeNameWhenGivenNotNull() {}
-    public void cloneUserWithIndependentCopyWithSameValue() {}
+    @Test
+    public void failChangeNameWhenGivenNull() {
+        id = new UserId("id");
+        name = new UserName("ABC");
+        User user = User.create(id, name);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                ()-> user.changeName(null));
+        assertEquals("name cannot be null", exception.getMessage());
+    }
+
+
 }
