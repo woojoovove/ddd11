@@ -57,5 +57,18 @@ public class UserTest {
         assertEquals(newUserName, user.getName());
     }
 
+    @Test
+    public void cloneUserWithIndependentCopyWithSameValue() {
+        id = new UserId("id");
+        name = new UserName("ABC");
+        User user = User.create(id, name);
 
+        User clonedUser = User.cloneUser(user);
+        assertNotNull(clonedUser);
+        assertEquals(user.getId(), clonedUser.getId());
+        assertEquals(user.getName(), clonedUser.getName());
+        // "assertNotSame" means two variables do not point to the same object.
+        // "assertEquals" follows the equals() method of the object.
+        assertNotSame(user, clonedUser);
+    }
 }
