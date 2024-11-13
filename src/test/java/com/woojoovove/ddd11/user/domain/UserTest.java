@@ -2,8 +2,7 @@ package com.woojoovove.ddd11.user.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     private UserId id;
@@ -26,8 +25,14 @@ public class UserTest {
         assertEquals("name cannot be null", exception.getMessage());
     }
 
+    @Test
     public void succeedCreateUserWhenGivenNotNull() {
-
+        id = new UserId("id");
+        name = new UserName("ABC");
+        User user = User.create(id, name);
+        assertNotNull(user);
+        assertEquals(id, user.getId());
+        assertEquals(name, user.getName());
     }
 
     public void failChangeNameWhenGivenNull() {}
