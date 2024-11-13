@@ -13,7 +13,8 @@ public class UserTest {
     public void failCreateUserWhenGivenNullId() {
         id = null;
         name = new UserName("ABC");
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> User.create(id, name));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> User.create(id, name));
         assertEquals("id cannot be null", exception.getMessage());
     }
 
@@ -21,7 +22,8 @@ public class UserTest {
     public void failCreateUserWhenGivenNullName() {
         id = new UserId("id");
         name = null;
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> User.create(id, name));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> User.create(id, name));
         assertEquals("name cannot be null", exception.getMessage());
     }
 
