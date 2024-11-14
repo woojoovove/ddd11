@@ -35,4 +35,14 @@ public class UserNameTest {
         assertEquals(name.getValue(), validName);
     }
 
+    @Test
+    public void returnTrueWhenGivenSameValueAndFalseWhenGivenDifferentValue() {
+        UserName wawa = new UserName("wawa");
+        UserName wawa2 = new UserName("wawa");
+        UserName chiwawa = new UserName("chiwawa");
+
+        assertEquals(wawa, wawa2);
+        assertNotEquals(wawa, chiwawa);
+    }
+
 }
