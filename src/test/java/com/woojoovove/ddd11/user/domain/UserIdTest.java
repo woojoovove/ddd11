@@ -39,4 +39,12 @@ public class UserIdTest {
         assertNotEquals(id, differentId);
     }
 
+    @Test
+    public void returnSameHashCodeGivenSameValue() {
+        UserId id = new UserId("id");
+        UserId id2 = new UserId("id");
+
+        assertEquals(id.hashCode(), id2.hashCode());
+    }
+
 }
