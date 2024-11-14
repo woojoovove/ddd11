@@ -20,6 +20,12 @@ public class UserNameTest {
                 () -> new UserName(tooShort));
         assertEquals("User name length must be at least 3", exception.getMessage());
     }
-
+    @Test
+    public void failConstructWhenGivenTooLong() {
+        String tooLong = "012345678901234567890";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new UserName(tooLong));
+        assertEquals("User name length must not be longer than 20", exception.getMessage());
+    }
 
 }
