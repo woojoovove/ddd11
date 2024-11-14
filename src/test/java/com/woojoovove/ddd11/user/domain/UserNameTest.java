@@ -13,4 +13,13 @@ public class UserNameTest {
                 () -> new UserName(nullValue));
         assertEquals("value cannot be null", exception.getMessage());
     }
+    @Test
+    public void failConstructWhenGivenTooShort() {
+        String tooShort = "A";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new UserName(tooShort));
+        assertEquals("User name length must be at least 3", exception.getMessage());
+    }
+
+
 }
