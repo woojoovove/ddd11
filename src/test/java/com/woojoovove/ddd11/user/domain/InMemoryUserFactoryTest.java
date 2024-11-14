@@ -23,4 +23,11 @@ public class InMemoryUserFactoryTest {
         assertDoesNotThrow(()->UUID.fromString(user.getId().getValue()));
         assertEquals(userName, user.getName());
     }
+    @Test
+    public void createDifferentUserWithSameNameValue() {
+        UserName userName = new UserName("userName");
+        User user = userFactory.create(userName);
+        User anotherUser = userFactory.create(userName);
+        assertNotEquals(user, anotherUser);
+    }
 }
