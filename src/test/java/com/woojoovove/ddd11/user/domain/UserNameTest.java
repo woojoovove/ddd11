@@ -45,4 +45,11 @@ public class UserNameTest {
         assertNotEquals(wawa, chiwawa);
     }
 
+    @Test
+    public void returnSameHashCodeWhenGivenSameValue() {
+        UserName wawa = new UserName("wawa");
+        UserName wawa2 = new UserName("wawa");
+
+        assertEquals(wawa.hashCode(), wawa2.hashCode());
+    }
 }
