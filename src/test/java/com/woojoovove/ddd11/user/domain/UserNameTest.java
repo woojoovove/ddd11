@@ -2,8 +2,7 @@ package com.woojoovove.ddd11.user.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserNameTest {
     @Test
@@ -26,6 +25,14 @@ public class UserNameTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new UserName(tooLong));
         assertEquals("User name length must not be longer than 20", exception.getMessage());
+    }
+
+    @Test
+    public void succeedConstructWhenGivenValid() {
+        String validName = "valid";
+        UserName name = new UserName(validName);
+
+        assertEquals(name.getValue(), validName);
     }
 
 }
