@@ -34,7 +34,7 @@ public class InMemoryUserRepositoryTest {
     }
 
     @Test
-    public void returnAllUser(){
+    public void returnAllUser() {
         User user1= User.create(new UserId("aaa"), new UserName("bbb"));
         User user2= User.create(new UserId("ccc"), new UserName("ddd"));
         repository.save(user1);
@@ -45,5 +45,22 @@ public class InMemoryUserRepositoryTest {
         assertTrue(users.contains(new UserData(user1)));
         assertTrue(users.contains(new UserData(user2)));
 
+    }
+
+    @Test
+    public void deleteUserFromRepository() {
+        UserName name = new UserName("ABC");
+        UserId id = new UserId("AAA");
+        User user1= User.create(id, name);
+        repository.save(user1);
+
+        UserName name2 = new UserName("ZZZ");
+        UserId id2 = new UserId("XXX");
+        User user2= User.create(id2, name2);
+        repository.save(user2);
+
+        repository.deleteById(id);
+        assertNull(repository.findOrNull(id));
+        assertNotNull(repository.findOrNull(id2));
     }
 }
