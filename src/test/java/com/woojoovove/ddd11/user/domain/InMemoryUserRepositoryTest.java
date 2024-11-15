@@ -3,8 +3,7 @@ package com.woojoovove.ddd11.user.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InMemoryUserRepositoryTest {
 
@@ -23,5 +22,11 @@ public class InMemoryUserRepositoryTest {
         assertNotNull(found);
         assertEquals(id, found.getId());
         assertEquals(name, found.getName());
+    }
+
+    @Test
+    public void returnNullGivenNonExistUser() {
+        UserId id = new UserId("AAA");
+        assertNull(repository.findOrNull(id));
     }
 }
