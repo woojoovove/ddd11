@@ -19,7 +19,7 @@ public class InMemoryCircleRepository implements ICircleRepository {
 
     @Override
     public Circle findByIdOrNull(CircleId circleId) {
-        return null;
+        return store.getOrDefault(circleId, null);
     }
 
     @Override
