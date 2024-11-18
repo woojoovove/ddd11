@@ -11,6 +11,9 @@ public class InMemoryCircleRepository implements ICircleRepository {
 
     @Override
     public Circle findByNameOrNull(CircleName circleName) {
+        for (Map.Entry<CircleId, Circle> entry : store.entrySet()) {
+            if (entry.getValue().getName().equals(circleName)) return store.get(entry.getKey());
+        }
         return null;
     }
 
