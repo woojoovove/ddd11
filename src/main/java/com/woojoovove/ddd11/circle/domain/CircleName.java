@@ -1,5 +1,7 @@
 package com.woojoovove.ddd11.circle.domain;
 
+import java.util.Objects;
+
 public class CircleName {
     private final String value;
 
@@ -12,5 +14,18 @@ public class CircleName {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj.getClass() != getClass() || obj == null) return false;
+        CircleName circleName = (CircleName) obj;
+        return circleName.equals(value);
     }
 }
