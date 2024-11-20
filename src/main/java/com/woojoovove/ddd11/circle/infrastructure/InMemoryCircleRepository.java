@@ -1,9 +1,11 @@
-package com.woojoovove.ddd11.circle.domain;
+package com.woojoovove.ddd11.circle.infrastructure;
+
+import com.woojoovove.ddd11.circle.domain.Circle;
+import com.woojoovove.ddd11.circle.domain.CircleId;
+import com.woojoovove.ddd11.circle.domain.CircleName;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.woojoovove.ddd11.circle.domain.Circle.cloneCircle;
 
 public class InMemoryCircleRepository implements ICircleRepository {
     private Map<CircleId, Circle> store = new HashMap<>();
@@ -24,7 +26,7 @@ public class InMemoryCircleRepository implements ICircleRepository {
 
     @Override
     public void save(Circle circle) {
-        store.put(circle.getId(), cloneCircle(circle));
+        store.put(circle.getId(), Circle.cloneCircle(circle));
     }
 
 }
