@@ -4,7 +4,6 @@ import com.woojoovove.ddd11.user.application.common.UserData;
 import com.woojoovove.ddd11.user.domain.User;
 import com.woojoovove.ddd11.user.domain.UserId;
 import com.woojoovove.ddd11.user.domain.UserName;
-import com.woojoovove.ddd11.user.infrastructure.InMemoryUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
