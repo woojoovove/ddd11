@@ -6,6 +6,7 @@ import com.woojoovove.ddd11.user.application.get.UserGetCommand;
 import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
 import com.woojoovove.ddd11.user.application.update.UserUpdateCommand;
 import com.woojoovove.ddd11.user.domain.*;
+import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 
 import java.util.List;
 

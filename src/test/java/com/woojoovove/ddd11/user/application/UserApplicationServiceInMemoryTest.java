@@ -2,6 +2,7 @@ package com.woojoovove.ddd11.user.application;
 
 import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
 import com.woojoovove.ddd11.user.domain.*;
+import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

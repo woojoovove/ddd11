@@ -1,4 +1,7 @@
-package com.woojoovove.ddd11.user.domain;
+package com.woojoovove.ddd11.user.infrastructure;
+
+import com.woojoovove.ddd11.user.domain.User;
+import com.woojoovove.ddd11.user.domain.UserId;
 
 import java.util.ArrayList;
 import java.util.HashMap;
