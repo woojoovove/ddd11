@@ -31,7 +31,7 @@ public class InMemoryUserRepository implements IUserRepository {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<User>(store.values());
+        return new ArrayList<>(store.values());
     }
 
     @Override
