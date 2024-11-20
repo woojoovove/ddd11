@@ -25,7 +25,7 @@ public class Circle {
         return new Circle(id, name, leader, members);
     }
 
-    static final Circle cloneCircle(Circle circle) {
+    public static final Circle cloneCircle(Circle circle) {
         return Circle.create(circle.getId(), circle.getName(), circle.getLeader(), circle.getMembers());
     }
 

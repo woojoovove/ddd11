@@ -6,9 +6,9 @@ import com.woojoovove.ddd11.circle.application.join.CircleJoinCommand;
 import com.woojoovove.ddd11.circle.domain.Circle;
 import com.woojoovove.ddd11.circle.domain.CircleName;
 import com.woojoovove.ddd11.circle.domain.ICircleFactory;
-import com.woojoovove.ddd11.circle.domain.ICircleRepository;
+import com.woojoovove.ddd11.circle.infrastructure.ICircleRepository;
 import com.woojoovove.ddd11.user.application.UserApplicationService;
-import com.woojoovove.ddd11.user.domain.IUserRepository;
+import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 import com.woojoovove.ddd11.user.domain.User;
 
 import java.util.List;
