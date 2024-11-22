@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InMemoryCircleRepositoryTest {
     private ICircleRepository circleRepository;
@@ -39,4 +38,10 @@ public class InMemoryCircleRepositoryTest {
         assertEquals(user, found.getLeader());
     }
 
+    @Test
+    public void returnNullWhenGivenNonExistingId() {
+        CircleId circleId = new CircleId("circleId");
+        Circle found = circleRepository.findByIdOrNull(circleId);
+        assertNull(found);
+    }
 }
