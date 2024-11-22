@@ -19,7 +19,7 @@ public class User {
     // 정적 팩토리 메소드
     // static : 인스턴스가 없을 때도 이 메소드를 호출할 수 있게 한다.
     // final : 객체를 immutable 하게 관리한다.
-    // public : 앱 레이어(application/**)가 도메인 레이어(domian/**)에 의존할 수밖에 없음.
+    // public : 외부 레이어(infrastructre/**)가 도메인 레이어(domian/**)에 의존할 수밖에 없음.
     public static final User create(UserId id, UserName name) {
         return new User(id, name);
     }
@@ -45,4 +45,18 @@ public class User {
     public static User cloneUser(User user) {
         return create(user.getId(), user.getName());
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return true;
+        User user = (User) obj;
+        return id.equals(user.getId());
+    }
+
 }
