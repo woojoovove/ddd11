@@ -44,4 +44,11 @@ public class InMemoryCircleRepositoryTest {
         Circle found = circleRepository.findByIdOrNull(circleId);
         assertNull(found);
     }
+
+    @Test
+    public void returnNullWhenGivenNonExistingName() {
+        CircleName circleName = new CircleName("circleName");
+        Circle found = circleRepository.findByNameOrNull(circleName);
+        assertNull(found);
+    }
 }
