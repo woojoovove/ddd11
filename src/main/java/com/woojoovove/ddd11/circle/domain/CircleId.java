@@ -6,6 +6,7 @@ public class CircleId {
     private final String value;
 
     public CircleId(String value) {
+        if (value == null || value.isEmpty()) throw new IllegalArgumentException("circleId cannot be null or empty");
         this.value = value;
     }
 
