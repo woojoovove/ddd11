@@ -14,4 +14,13 @@ public class CircleIdTest {
                 ()-> new CircleId(nullValue));
         assertEquals("circleId cannot be null or empty", exception.getMessage());
     }
+
+    @Test
+    public void failCreateCircleIdWhenEmpty() {
+        String nullValue = "";
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                ()-> new CircleId(nullValue));
+        assertEquals("circleId cannot be null or empty", exception.getMessage());
+    }
 }
