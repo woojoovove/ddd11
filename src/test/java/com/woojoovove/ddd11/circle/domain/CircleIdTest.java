@@ -23,4 +23,11 @@ public class CircleIdTest {
                 ()-> new CircleId(nullValue));
         assertEquals("circleId cannot be null or empty", exception.getMessage());
     }
+
+    @Test
+    public void succedCreateIdWhenValid() {
+        String validValue = "circleId";
+        CircleId circleId = new CircleId(validValue);
+        assertEquals(validValue, circleId.getValue());
+    }
 }
