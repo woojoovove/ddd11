@@ -30,4 +30,13 @@ public class CircleIdTest {
         CircleId circleId = new CircleId(validValue);
         assertEquals(validValue, circleId.getValue());
     }
+
+    @Test
+    public void returnTrueWhenSameValue() {
+        String one = "value1";
+        String another = "value1";
+        CircleId oncCircleId = new CircleId(one);
+        CircleId anotherCircleId = new CircleId(another);
+        assertEquals(oncCircleId, anotherCircleId);
+    }
 }
