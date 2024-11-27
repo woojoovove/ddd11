@@ -2,8 +2,7 @@ package com.woojoovove.ddd11.circle.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CircleIdTest {
     @Test
@@ -46,5 +45,21 @@ public class CircleIdTest {
         CircleId circleId = new CircleId(validValue);
         String givenVaule = circleId.getValue();
         assertEquals(validValue, givenVaule);
+    }
+
+    @Test
+    public void returnTrueWhenEqualsSameObject() {
+        String validValue = "circleId";
+        CircleId circleId = new CircleId(validValue);
+        assertEquals(circleId, circleId);
+    }
+
+    @Test
+    public void returnFalseWhenDifferentValue() {
+        String one = "value1";
+        String another = "value2";
+        CircleId oncCircleId = new CircleId(one);
+        CircleId anotherCircleId = new CircleId(another);
+        assertNotEquals(oncCircleId, anotherCircleId);
     }
 }
