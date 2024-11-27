@@ -32,10 +32,8 @@ public class CircleIdTest {
 
     @Test
     public void returnTrueWhenSameValue() {
-        String one = "value1";
-        String another = "value1";
-        CircleId oncCircleId = new CircleId(one);
-        CircleId anotherCircleId = new CircleId(another);
+        CircleId oncCircleId = new CircleId("value1");
+        CircleId anotherCircleId = new CircleId("value1");
         assertEquals(oncCircleId, anotherCircleId);
     }
 
@@ -49,17 +47,26 @@ public class CircleIdTest {
 
     @Test
     public void returnTrueWhenEqualsSameObject() {
-        String validValue = "circleId";
-        CircleId circleId = new CircleId(validValue);
+        CircleId circleId = new CircleId("circleId");
         assertEquals(circleId, circleId);
     }
 
     @Test
     public void returnFalseWhenDifferentValue() {
-        String one = "value1";
-        String another = "value2";
-        CircleId oncCircleId = new CircleId(one);
-        CircleId anotherCircleId = new CircleId(another);
+        CircleId oncCircleId = new CircleId("value1");
+        CircleId anotherCircleId = new CircleId("value2");
         assertNotEquals(oncCircleId, anotherCircleId);
+    }
+
+    @Test
+    public void returnFalseWhenComparedWithNull() {
+        CircleId circleId = new CircleId("circle");
+        assertNotEquals(null, circleId);
+    }
+
+    @Test
+    public void hashCodeShouldBeConsistent() {
+        CircleId circleId = new CircleId("circle");
+        assertEquals(circleId.hashCode(), circleId.hashCode());
     }
 }
