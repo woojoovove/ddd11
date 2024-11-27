@@ -39,4 +39,12 @@ public class CircleIdTest {
         CircleId anotherCircleId = new CircleId(another);
         assertEquals(oncCircleId, anotherCircleId);
     }
+
+    @Test
+    public void returnRightValueWhenGet() {
+        String validValue = "circleId";
+        CircleId circleId = new CircleId(validValue);
+        String givenVaule = circleId.getValue();
+        assertEquals(validValue, givenVaule);
+    }
 }
