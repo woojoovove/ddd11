@@ -28,4 +28,11 @@ public class CircleNameTest {
         ()-> new CircleName(tooLong));
         assertEquals(exception.getMessage(), "Circle name length must not be longer than 20");
     }
+
+    @Test
+    public void returnRightValueWhenGet() {
+        String value = "circleName";
+        CircleName circleName = new CircleName(value);
+        assertEquals(value, circleName.getValue());
+    }
 }
