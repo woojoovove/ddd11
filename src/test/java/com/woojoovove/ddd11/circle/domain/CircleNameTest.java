@@ -37,17 +37,14 @@ public class CircleNameTest {
 
     @Test
     public void returnTrueWhenGivenSameObject() {
-        String value = "circleName";
-        CircleName circleName = new CircleName(value);
+        CircleName circleName = new CircleName("circleName");
         assertEquals(circleName, circleName);
     }
 
     @Test
     public void returnTrueWhenCompareGivenSameValue() {
-        String value = "circleName";
-        String sameValue = "circleName";
-        CircleName circleName = new CircleName(value);
-        CircleName sameName = new CircleName(sameValue);
+        CircleName circleName = new CircleName("circleName");
+        CircleName sameName = new CircleName("circleName");
         assertEquals(circleName, sameName);
     }
 
