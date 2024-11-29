@@ -50,4 +50,13 @@ public class CircleNameTest {
         CircleName sameName = new CircleName(sameValue);
         assertEquals(circleName, sameName);
     }
+
+    @Test
+    public void returnFalseWhenCompareGivenDifferentValue() {
+        String value = "circleName";
+        String differentValue = "differentValue";
+        CircleName circleName = new CircleName(value);
+        CircleName differentName = new CircleName(differentValue);
+        assertNotEquals(circleName, differentName);
+    }
 }
