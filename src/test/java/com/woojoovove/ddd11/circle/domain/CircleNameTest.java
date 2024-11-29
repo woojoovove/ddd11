@@ -57,6 +57,8 @@ public class CircleNameTest {
 
     @Test
     public void returnSameHashCodeGivenSameValue() {
-
+        CircleName circleName = new CircleName("circleName");
+        CircleName sameName = new CircleName("circleName");
+        assertEquals(circleName.hashCode(), sameName.hashCode());
     }
 }
