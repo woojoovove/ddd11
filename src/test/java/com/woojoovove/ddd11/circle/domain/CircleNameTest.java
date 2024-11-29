@@ -20,4 +20,12 @@ public class CircleNameTest {
                 ()-> new CircleName(tooShort));
         assertEquals(exception.getMessage(), "Circle name length must be at least 3");
     }
+
+    @Test
+    public void failCreateCircleNameGivenTooLong() {
+        String tooLong = "012345678901234567890";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+        ()-> new CircleName(tooLong));
+        assertEquals(exception.getMessage(), "Circle name length must not be longer than 20");
+    }
 }
