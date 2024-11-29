@@ -26,6 +26,6 @@ public class CircleName {
         if (this == obj) return true;
         if (obj.getClass() != getClass() || obj == null) return false;
         CircleName circleName = (CircleName) obj;
-        return circleName.equals(value);
+        return circleName.getValue().equals(value);
     }
 }
