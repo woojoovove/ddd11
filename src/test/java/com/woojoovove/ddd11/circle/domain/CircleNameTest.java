@@ -2,8 +2,7 @@ package com.woojoovove.ddd11.circle.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CircleNameTest {
     @Test
@@ -44,11 +43,11 @@ public class CircleNameTest {
     }
 
     @Test
-    public void returnTrueWhenEqualsGivenSameValue() {
+    public void returnTrueWhenCompareGivenSameValue() {
         String value = "circleName";
         String sameValue = "circleName";
         CircleName circleName = new CircleName(value);
-        CircleName sameName = new CircleName(value);
+        CircleName sameName = new CircleName(sameValue);
         assertEquals(circleName, sameName);
     }
 }
