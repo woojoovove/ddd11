@@ -50,10 +50,13 @@ public class CircleNameTest {
 
     @Test
     public void returnFalseWhenCompareGivenDifferentValue() {
-        String value = "circleName";
-        String differentValue = "differentValue";
-        CircleName circleName = new CircleName(value);
-        CircleName differentName = new CircleName(differentValue);
+        CircleName circleName = new CircleName("circleName");
+        CircleName differentName = new CircleName("differentValue");
         assertNotEquals(circleName, differentName);
+    }
+
+    @Test
+    public void returnSameHashCodeGivenSameValue() {
+
     }
 }
