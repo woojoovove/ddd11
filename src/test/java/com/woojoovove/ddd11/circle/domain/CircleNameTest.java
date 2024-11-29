@@ -42,4 +42,13 @@ public class CircleNameTest {
         CircleName circleName = new CircleName(value);
         assertEquals(circleName, circleName);
     }
+
+    @Test
+    public void returnTrueWhenEqualsGivenSameValue() {
+        String value = "circleName";
+        String sameValue = "circleName";
+        CircleName circleName = new CircleName(value);
+        CircleName sameName = new CircleName(value);
+        assertEquals(circleName, sameName);
+    }
 }
