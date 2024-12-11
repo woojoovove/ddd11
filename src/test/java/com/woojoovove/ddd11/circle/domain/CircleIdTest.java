@@ -61,12 +61,19 @@ public class CircleIdTest {
     @Test
     public void returnFalseWhenComparedWithNull() {
         CircleId circleId = new CircleId("circle");
-        assertNotEquals(null, circleId);
+        assertNotEquals(circleId, null);
     }
 
     @Test
     public void hashCodeShouldBeConsistent() {
         CircleId circleId = new CircleId("circle");
         assertEquals(circleId.hashCode(), circleId.hashCode());
+    }
+
+    @Test
+    public void returnFalseWhenComparedWithDifferentClass() {
+        CircleId circleId = new CircleId("circleId");
+        CircleName differentObj = new CircleName("circleName");
+        assertNotEquals(circleId, differentObj);
     }
 }
