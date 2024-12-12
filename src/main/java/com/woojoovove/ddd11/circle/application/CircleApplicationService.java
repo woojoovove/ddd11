@@ -8,7 +8,6 @@ import com.woojoovove.ddd11.circle.domain.CircleName;
 import com.woojoovove.ddd11.circle.domain.ICircleFactory;
 import com.woojoovove.ddd11.circle.infrastructure.ICircleRepository;
 import com.woojoovove.ddd11.user.application.UserApplicationService;
-import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 import com.woojoovove.ddd11.user.domain.User;
 
 import java.util.List;
@@ -18,18 +17,19 @@ public class CircleApplicationService {
     private final ICircleFactory circleFactory;
     private final UserApplicationService userApplicationService;
 
-    public CircleApplicationService(ICircleRepository circleRepository, ICircleFactory circleFactory, IUserRepository userRepository, UserApplicationService userApplicationService) {
+    public CircleApplicationService(ICircleRepository circleRepository, ICircleFactory circleFactory, UserApplicationService userApplicationService) {
         this.circleRepository = circleRepository;
         this.circleFactory = circleFactory;
         this.userApplicationService = userApplicationService;
     }
 
-
     public void createCircle(CircleCreateCommand createCommand) {
         // CircleAppService가 UserRepository에 직접 의존하지 않도록 함.
         User user = userApplicationService.findOrNull(createCommand.getOwnerId());
-        // TODO: 에러가 뷰 레이어에서 처리되었어야 하는 건 아닌가? 받자마자...
-        if (user == null) throw new IllegalArgumentException("no circle leader");
+        // Q. 에러가 뷰 레이어에서 처리되었어야 하는 건 아닌가? 받자마자...
+        // 그러나 뷰 레이어는 DB 접근 등의 책임에서 자유로워야 하므로
+        // user 존재 여부는 서비스 레이어에서 검사하기로 함.
+        if (user == null) throw new IllegalArgumentException("user not found");
         if (circleExists(createCommand.getName())) throw new IllegalArgumentException("circle already exists");
         Circle circle = circleFactory.create(createCommand.getName(), user);
         circleRepository.save(circle);
