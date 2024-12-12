@@ -8,6 +8,8 @@ public class CircleCreateCommand {
     private final UserId ownerId;
 
     public CircleCreateCommand(CircleName name, UserId ownerId) {
+        if (name == null) throw new RuntimeException("circle name cannot be null");
+        if (ownerId == null) throw new RuntimeException("userId cannot be null");
         this.name = name;
         this.ownerId = ownerId;
     }
