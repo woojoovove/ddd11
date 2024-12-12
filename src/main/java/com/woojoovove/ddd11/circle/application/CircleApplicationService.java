@@ -18,7 +18,7 @@ public class CircleApplicationService {
     private final ICircleFactory circleFactory;
     private final UserApplicationService userApplicationService;
 
-    public CircleApplicationService(ICircleRepository circleRepository, ICircleFactory circleFactory, IUserRepository userRepository, UserApplicationService userApplicationService) {
+    public CircleApplicationService(ICircleRepository circleRepository, ICircleFactory circleFactory, UserApplicationService userApplicationService) {
         this.circleRepository = circleRepository;
         this.circleFactory = circleFactory;
         this.userApplicationService = userApplicationService;
