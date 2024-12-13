@@ -68,4 +68,25 @@ public class CircleApplicationServiceInMemoryTest {
         verifyNoMoreInteractions(circleFactory);
         verifyNoMoreInteractions(circleRepository);
     }
+
+    @Test
+    void succeedCreateGivenNonExistCircleName() {
+
+        UserId userId = new UserId("userId");
+        CircleName circleName = new CircleName("circleName");
+        CircleCreateCommand createCommand = new CircleCreateCommand(circleName, userId);
+        User mockUser = User.create(userId, new UserName("userName"));
+
+
+        when(userApplicationService.findOrNull(userId)).thenReturn(mockUser);
+        when(circleRepository.findByNameOrNull(circleName)).thenReturn(null);
+        Circle mockCircle = mock(Circle.class);
+        when(circleFactory.create(circleName, mockUser)).thenReturn(mockCircle);
+
+        circleApplicationService.createCircle(createCommand);
+
+        verify(circleRepository).findByNameOrNull(circleName);
+        verify(circleFactory).create(circleName, mockUser);
+        verify(circleRepository).save(mockCircle);
+    }
 }
