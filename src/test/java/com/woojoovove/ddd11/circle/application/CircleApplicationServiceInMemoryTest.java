@@ -1,6 +1,7 @@
 package com.woojoovove.ddd11.circle.application;
 
 import com.woojoovove.ddd11.circle.application.create.CircleCreateCommand;
+import com.woojoovove.ddd11.circle.application.join.CircleJoinCommand;
 import com.woojoovove.ddd11.circle.domain.Circle;
 import com.woojoovove.ddd11.circle.domain.CircleId;
 import com.woojoovove.ddd11.circle.domain.CircleName;
@@ -88,5 +89,13 @@ public class CircleApplicationServiceInMemoryTest {
         verify(circleRepository).findByNameOrNull(circleName);
         verify(circleFactory).create(circleName, mockUser);
         verify(circleRepository).save(mockCircle);
+    }
+
+    @Test
+    void throwWhenJoinCircleGivenNonExistCircle() {
+        CircleJoinCommand joinCommand = new CircleJoinCommand(new CircleId("nonExisting"), new UserId("userId"));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> circleApplicationService.joinCircle(joinCommand));
+        assertEquals(exception.getMessage(), "circle not found");
     }
 }
