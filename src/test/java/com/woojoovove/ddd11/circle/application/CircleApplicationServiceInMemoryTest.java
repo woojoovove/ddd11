@@ -98,4 +98,14 @@ public class CircleApplicationServiceInMemoryTest {
                 () -> circleApplicationService.joinCircle(joinCommand));
         assertEquals(exception.getMessage(), "circle not found");
     }
+
+    @Test
+    void throwWhenJoinCircleGivenNonExistUser() {
+        CircleId circleId = new CircleId("circleId");
+        CircleJoinCommand joinCommand = new CircleJoinCommand(circleId, new UserId("userId"));
+        when(circleRepository.findByIdOrNull(circleId)).thenReturn(mock(Circle.class));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> circleApplicationService.joinCircle(joinCommand));
+        assertEquals(exception.getMessage(), "user not found");
+    }
 }
