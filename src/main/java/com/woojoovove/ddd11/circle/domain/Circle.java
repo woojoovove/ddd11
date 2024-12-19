@@ -29,6 +29,9 @@ public class Circle {
         return Circle.create(circle.getId(), circle.getName(), circle.getLeader(), circle.getMembers());
     }
 
+    // 엔티티 외부에서 상태를 조작하지 않도록
+    // 즉, circle.members.add(); 하지 않도록
+    // Circle에 addMember 구현
     public void addMember(User user) {
         if (this.members.size() >= 30) {
             throw new IllegalArgumentException("정원 초과");
