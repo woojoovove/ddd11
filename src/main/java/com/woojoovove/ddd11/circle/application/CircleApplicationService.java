@@ -10,8 +10,6 @@ import com.woojoovove.ddd11.circle.infrastructure.ICircleRepository;
 import com.woojoovove.ddd11.user.application.UserApplicationService;
 import com.woojoovove.ddd11.user.domain.User;
 
-import java.util.List;
-
 public class CircleApplicationService {
     private final ICircleRepository circleRepository;
     private final ICircleFactory circleFactory;
@@ -45,16 +43,12 @@ public class CircleApplicationService {
         return circleRepository.findByNameOrNull(circleName) != null;
     }
 
-    public void joinCircle(CircleJoinCommand joinCommand) {
+    public void joinCircle(final CircleJoinCommand joinCommand) {
         Circle circle = circleRepository.findByIdOrNull(joinCommand.getCircleId());
         if (circle == null) throw new IllegalArgumentException("circle not found");
         User user = userApplicationService.findOrNull(joinCommand.getUserId());
         if (user == null) throw new IllegalArgumentException("user not found");
-        List<User> member = circle.getMembers();
-        if (member.size()>=30) {
-            throw new IllegalStateException("정원 초과");
-        }
-        member.add(user);
+        circle.addMember(user);
         circleRepository.save(circle);
     }
 }

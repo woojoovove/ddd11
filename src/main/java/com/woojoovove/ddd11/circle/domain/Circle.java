@@ -29,6 +29,12 @@ public class Circle {
         return Circle.create(circle.getId(), circle.getName(), circle.getLeader(), circle.getMembers());
     }
 
+    public void addMember(User user) {
+        if (this.members.size() >= 30) {
+            throw new IllegalArgumentException("정원 초과");
+        }
+        this.members.add(user);
+    }
     public CircleId getId() {
         return id;
     }
