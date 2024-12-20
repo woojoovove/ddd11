@@ -40,6 +40,22 @@ public class UserIdTest {
     }
 
     @Test
+    public void returnFalseWhenCompareGivenDifferentClass() {
+        UserId id = new UserId("id");
+        UserName userName = new UserName("name");
+
+        assertFalse(id.equals(userName));
+    }
+
+    @Test
+    public void returnFalseWhenCompareGivenNull() {
+        UserId id = new UserId("id");
+        UserName userName = new UserName("name");
+
+        assertFalse(id.equals(null));
+    }
+
+    @Test
     public void returnSameHashCodeGivenSameValue() {
         UserId id = new UserId("id");
         UserId id2 = new UserId("id");

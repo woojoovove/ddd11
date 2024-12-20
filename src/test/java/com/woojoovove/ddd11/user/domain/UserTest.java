@@ -71,4 +71,32 @@ public class UserTest {
         // "assertEquals" follows the equals() method of the object.
         assertNotSame(user, clonedUser);
     }
+
+    @Test
+    public void sameHashCodeWhenCalledDifferentTime() {
+        User user = User.create(new UserId("id"), new UserName("name"));
+        assertEquals(user.hashCode(), user.hashCode());
+    }
+
+    @Test
+    public void differentHashCodeWhenNotEquals() {
+        User user1 = User.create(new UserId("id1"), new UserName("name1"));
+        User user2 = User.create(new UserId("id2"), new UserName("name2"));
+
+        assertNotEquals(user1.hashCode(), user2.hashCode());
+    }
+
+    @Test
+    public void returnFalseWhenComparedGivenDifferentClass() {
+        User user1 = User.create(new UserId("id"), new UserName("name"));
+        UserId userId = new UserId("id");
+        assertFalse(user1.equals(userId));
+    }
+
+    @Test
+    public void returnFalseWhenComparedGivenNull() {
+        User user1 = User.create(new UserId("id"), new UserName("name"));
+        assertFalse(user1.equals(null));
+    }
+
 }
