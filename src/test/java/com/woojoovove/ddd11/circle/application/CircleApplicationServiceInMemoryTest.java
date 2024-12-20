@@ -108,4 +108,21 @@ public class CircleApplicationServiceInMemoryTest {
                 () -> circleApplicationService.joinCircle(joinCommand));
         assertEquals(exception.getMessage(), "user not found");
     }
+
+    @Test
+    void succeedWhenJoinCircleGivenExistCircleAndUser() {
+        CircleId circleId = new CircleId("circleId");
+        Circle mockCircle = mock(Circle.class);
+        when(circleRepository.findByIdOrNull(circleId)).thenReturn(mockCircle);
+
+        UserId userId = new UserId("userId");
+        User mockUser = User.create(userId, new UserName("userName"));
+        when(userApplicationService.findOrNull(userId)).thenReturn(mockUser);
+
+        CircleJoinCommand joinCommand = new CircleJoinCommand(circleId, userId);
+        circleApplicationService.joinCircle(joinCommand);
+
+        verify(mockCircle).addMember(mockUser);
+        verify(circleRepository).save(mockCircle);
+    }
 }
