@@ -85,4 +85,18 @@ public class UserTest {
 
         assertNotEquals(user1.hashCode(), user2.hashCode());
     }
+
+    @Test
+    public void returnFalseWhenComparedGivenDifferentClass() {
+        User user1 = User.create(new UserId("id"), new UserName("name"));
+        UserId userId = new UserId("id");
+        assertFalse(user1.equals(userId));
+    }
+
+    @Test
+    public void returnFalseWhenComparedGivenNull() {
+        User user1 = User.create(new UserId("id"), new UserName("name"));
+        assertFalse(user1.equals(null));
+    }
+
 }
