@@ -60,5 +60,9 @@ public class UserNameTest {
         assertFalse(wawa.equals(id));
     }
 
-
+    @Test
+    public void returnFalseWhenComparedGivenNull() {
+        UserName wawa = new UserName("wawa");
+        assertFalse(wawa.equals(null));
+    }
 }
