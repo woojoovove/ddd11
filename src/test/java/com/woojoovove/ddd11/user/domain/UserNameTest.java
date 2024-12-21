@@ -52,4 +52,17 @@ public class UserNameTest {
 
         assertEquals(wawa.hashCode(), wawa2.hashCode());
     }
+
+    @Test
+    public void returnFalseWhenComparedGivenDifferentClass() {
+        UserName wawa = new UserName("wawa");
+        UserId id = new UserId("id");
+        assertFalse(wawa.equals(id));
+    }
+
+    @Test
+    public void returnFalseWhenComparedGivenNull() {
+        UserName wawa = new UserName("wawa");
+        assertFalse(wawa.equals(null));
+    }
 }
