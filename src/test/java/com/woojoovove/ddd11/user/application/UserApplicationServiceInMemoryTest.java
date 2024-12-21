@@ -53,4 +53,14 @@ public class UserApplicationServiceInMemoryTest {
         verify(userFactory, times(1)).create(userName);
         verify(userRepository, times(1)).save(mockUser);
     }
+
+    @Test
+    public void returnUserWhenFindOrNullGivenExistingUserId() {
+        UserId userId = new UserId("id");
+        User mockUser = mock(User.class);
+
+        when(userRepository.findOrNull(userId)).thenReturn(mockUser);
+        assertEquals(userApplicationService.findOrNull(userId), mockUser);
+        verify(userRepository).findOrNull(userId);
+    }
 }
