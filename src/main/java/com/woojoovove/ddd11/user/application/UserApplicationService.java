@@ -34,7 +34,7 @@ public class UserApplicationService {
     }
 
     public UserData get(UserGetCommand getCommand) {
-        UserId userId = new UserId(getCommand.getId());
+        UserId userId = getCommand.getId();
         User user = userRepository.findOrNull(userId);
         if (user == null) throw new IllegalStateException("user not found");
         return new UserData(user);
