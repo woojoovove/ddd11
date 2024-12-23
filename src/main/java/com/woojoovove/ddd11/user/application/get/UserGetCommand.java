@@ -1,9 +1,15 @@
 package com.woojoovove.ddd11.user.application.get;
 
-public class UserGetCommand {
-    private String id;
+import com.woojoovove.ddd11.user.domain.UserId;
 
-    public String getId() {
+public class UserGetCommand {
+    private UserId id;
+
+    public UserGetCommand(UserId id) {
+        this.id = id;
+    }
+
+    public UserId getId() {
         return id;
     }
 }
