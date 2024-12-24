@@ -8,6 +8,8 @@ import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -93,5 +95,11 @@ public class UserApplicationServiceInMemoryTest {
         when(userRepository.findOrNull(userId)).thenReturn(user);
         UserData userData = userApplicationService.get(getCommand);
         assertEquals(userData, new UserData(user));
+    }
+
+    @Test
+    public void returnUserDataListWhenGetAll() {
+        assertNotNull(userApplicationService.getAll());
+        verify(userRepository).findAll();
     }
 }
