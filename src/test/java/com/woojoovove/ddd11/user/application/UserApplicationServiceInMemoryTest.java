@@ -1,5 +1,6 @@
 package com.woojoovove.ddd11.user.application;
 
+import com.woojoovove.ddd11.user.application.common.UserData;
 import com.woojoovove.ddd11.user.application.get.UserGetCommand;
 import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
 import com.woojoovove.ddd11.user.domain.*;
@@ -82,5 +83,15 @@ public class UserApplicationServiceInMemoryTest {
         IllegalStateException exception = assertThrows(IllegalStateException.class,
                 () -> userApplicationService.get(getCommand));
         assertEquals(exception.getMessage(), "user not found");
+    }
+
+    @Test
+    public void returnUserDataWhenGetDataGivenValidInput() {
+        UserId userId = new UserId("id");
+        UserGetCommand getCommand = new UserGetCommand(userId);
+        User user = User.create(userId, new UserName("name"));
+        when(userRepository.findOrNull(userId)).thenReturn(user);
+        UserData userData = userApplicationService.get(getCommand);
+        assertEquals(userData, new UserData(user));
     }
 }
