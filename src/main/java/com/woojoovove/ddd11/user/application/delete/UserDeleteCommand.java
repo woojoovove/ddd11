@@ -1,9 +1,15 @@
 package com.woojoovove.ddd11.user.application.delete;
 
-public class UserDeleteCommand {
-    private String id;
+import com.woojoovove.ddd11.user.domain.UserId;
 
-    public String getId() {
+public class UserDeleteCommand {
+    private final UserId id;
+
+    public UserDeleteCommand(UserId id) {
+        this.id = id;
+    }
+
+    public UserId getId() {
         return id;
     }
 }

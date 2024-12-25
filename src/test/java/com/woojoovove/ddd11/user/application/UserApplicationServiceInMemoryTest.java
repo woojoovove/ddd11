@@ -1,6 +1,7 @@
 package com.woojoovove.ddd11.user.application;
 
 import com.woojoovove.ddd11.user.application.common.UserData;
+import com.woojoovove.ddd11.user.application.delete.UserDeleteCommand;
 import com.woojoovove.ddd11.user.application.get.UserGetCommand;
 import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
 import com.woojoovove.ddd11.user.domain.*;
@@ -8,7 +9,6 @@ import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -101,5 +101,14 @@ public class UserApplicationServiceInMemoryTest {
     public void returnUserDataListWhenGetAll() {
         assertNotNull(userApplicationService.getAll());
         verify(userRepository).findAll();
+    }
+
+    @Test
+    public void failWhenDeleteGivenNonExistingUser() {
+        UserId userId = new UserId("id");
+        UserDeleteCommand deleteCommand = new UserDeleteCommand(userId);
+        when(userRepository.findOrNull(userId)).thenReturn(null);
+        userApplicationService.delete(deleteCommand);
+        verify(userRepository, never()).deleteById(userId);
     }
 }
