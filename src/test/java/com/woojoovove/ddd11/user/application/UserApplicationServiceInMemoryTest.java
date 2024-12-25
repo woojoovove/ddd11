@@ -111,4 +111,14 @@ public class UserApplicationServiceInMemoryTest {
         userApplicationService.delete(deleteCommand);
         verify(userRepository, never()).deleteById(userId);
     }
+
+    @Test
+    public void succeedWhenDeleteGivenExistingUser() {
+        UserId userId = new UserId("id");
+        UserDeleteCommand deleteCommand = new UserDeleteCommand(userId);
+        User mockUser = mock(User.class);
+        when(userRepository.findOrNull(userId)).thenReturn(mockUser);
+        userApplicationService.delete(deleteCommand);
+        verify(userRepository).deleteById(userId);
+    }
 }
