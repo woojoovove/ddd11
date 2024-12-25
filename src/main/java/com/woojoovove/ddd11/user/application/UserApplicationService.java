@@ -58,7 +58,7 @@ public class UserApplicationService {
 
     public void delete(UserDeleteCommand deleteCommand) {
 
-        UserId id = new UserId(deleteCommand.getId());
+        UserId id = deleteCommand.getId();
         User user = userRepository.findOrNull(id);
         if (user == null) return;
         userRepository.deleteById(id);
