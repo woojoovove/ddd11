@@ -4,6 +4,7 @@ import com.woojoovove.ddd11.user.application.common.UserData;
 import com.woojoovove.ddd11.user.application.delete.UserDeleteCommand;
 import com.woojoovove.ddd11.user.application.get.UserGetCommand;
 import com.woojoovove.ddd11.user.application.register.UserRegisterCommand;
+import com.woojoovove.ddd11.user.application.update.UserUpdateCommand;
 import com.woojoovove.ddd11.user.domain.*;
 import com.woojoovove.ddd11.user.infrastructure.IUserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -120,5 +121,40 @@ public class UserApplicationServiceInMemoryTest {
         when(userRepository.findOrNull(userId)).thenReturn(mockUser);
         userApplicationService.delete(deleteCommand);
         verify(userRepository).deleteById(userId);
+    }
+
+    @Test
+    public void throwWhenUpdateGivenNonExistingUser() {
+        UserId userId = new UserId("id");
+        when(userRepository.findOrNull(userId)).thenReturn(null);
+        UserUpdateCommand updateCommand = new UserUpdateCommand(userId, new UserName("name"));
+        IllegalStateException exception = assertThrows(IllegalStateException.class,
+                ()-> userApplicationService.update(updateCommand));
+
+        assertEquals(exception.getMessage(), "user not found");
+    }
+
+    @Test
+    public void succeedWhenUpdateGivenExistingUserAndName() {
+        UserId userId = new UserId("id");
+        UserName userNameBefore = new UserName("name");
+        UserName userNameAfter = new UserName("name");
+        User userBefore = User.create(userId, userNameBefore);
+        User userAfter = User.create(userId, userNameBefore);
+        when(userRepository.findOrNull(userId)).thenReturn(userBefore);
+        UserUpdateCommand updateCommand = new UserUpdateCommand(userId, userNameAfter);
+        userApplicationService.update(updateCommand);
+        verify(userRepository).save(userAfter);
+    }
+
+    @Test
+    public void doNotSaveWhenUpdateGivenNoName() {
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        when(userRepository.findOrNull(userId)).thenReturn(user);
+        UserUpdateCommand updateCommand = new UserUpdateCommand(userId, null);
+        userApplicationService.update(updateCommand);
+        assertEquals(user.getName(), userName);
     }
 }
