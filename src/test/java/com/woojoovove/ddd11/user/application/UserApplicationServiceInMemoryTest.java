@@ -133,4 +133,28 @@ public class UserApplicationServiceInMemoryTest {
 
         assertEquals(exception.getMessage(), "user not found");
     }
+
+    @Test
+    public void succeedWhenUpdateGivenExistingUserAndName() {
+        UserId userId = new UserId("id");
+        UserName userNameBefore = new UserName("name");
+        UserName userNameAfter = new UserName("name");
+        User userBefore = User.create(userId, userNameBefore);
+        User userAfter = User.create(userId, userNameBefore);
+        when(userRepository.findOrNull(userId)).thenReturn(userBefore);
+        UserUpdateCommand updateCommand = new UserUpdateCommand(userId, userNameAfter);
+        userApplicationService.update(updateCommand);
+        verify(userRepository).save(userAfter);
+    }
+
+    @Test
+    public void doNotSaveWhenUpdateGivenNoName() {
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        when(userRepository.findOrNull(userId)).thenReturn(user);
+        UserUpdateCommand updateCommand = new UserUpdateCommand(userId, null);
+        userApplicationService.update(updateCommand);
+        assertEquals(user.getName(), userName);
+    }
 }
