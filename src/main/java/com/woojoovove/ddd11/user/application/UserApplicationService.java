@@ -41,12 +41,12 @@ public class UserApplicationService {
     }
 
     public void update(UserUpdateCommand updateCommand) {
-        UserId id = new UserId(updateCommand.getId());
+        UserId id = updateCommand.getId();
         User user = userRepository.findOrNull(id);
         if (user == null) throw new IllegalStateException("user not found");
         if (updateCommand.getName() != null) {
 
-            UserName name = new UserName(updateCommand.getName());
+            UserName name = updateCommand.getName();
             user.changeName(name);
         }
         userRepository.save(user);
