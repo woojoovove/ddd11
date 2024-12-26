@@ -4,8 +4,8 @@ import com.woojoovove.ddd11.user.domain.UserId;
 import com.woojoovove.ddd11.user.domain.UserName;
 
 public class UserUpdateCommand {
-    private UserId id;
-    private UserName name;
+    private final UserId id;
+    private final UserName name;
 
     public UserUpdateCommand(UserId id, UserName name) {
         this.id = id;
