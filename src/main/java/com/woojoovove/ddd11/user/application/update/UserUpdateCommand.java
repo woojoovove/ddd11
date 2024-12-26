@@ -1,14 +1,22 @@
 package com.woojoovove.ddd11.user.application.update;
 
-public class UserUpdateCommand {
-    private String id;
-    private String name;
+import com.woojoovove.ddd11.user.domain.UserId;
+import com.woojoovove.ddd11.user.domain.UserName;
 
-    public String getId() {
+public class UserUpdateCommand {
+    private UserId id;
+    private UserName name;
+
+    public UserUpdateCommand(UserId id, UserName name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public UserId getId() {
         return id;
     }
 
-    public String getName() {
+    public UserName getName() {
         return name;
     }
 }
