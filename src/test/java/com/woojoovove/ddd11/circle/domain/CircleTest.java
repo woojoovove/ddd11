@@ -1,15 +1,16 @@
 package com.woojoovove.ddd11.circle.domain;
 
 import com.woojoovove.ddd11.user.domain.User;
-import org.junit.jupiter.api.BeforeEach;
+import com.woojoovove.ddd11.user.domain.UserId;
+import com.woojoovove.ddd11.user.domain.UserName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CircleTest {
 
@@ -48,5 +49,23 @@ public class CircleTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 ()-> Circle.create(id, name, user, null));
         assertEquals(exception.getMessage(), "members cannot be null");
+    }
+
+    @Test
+    void throwWhenAddMemberGivenOver30() {
+        User user = mock(User.class);
+        List<User> members = new ArrayList<>();
+        for (int i=0; i<30; i++) {
+            members.add(User.create(new UserId(String.valueOf(i)), new UserName(String.valueOf((i+1)*100))));
+        }
+        Circle circle = Circle.create(
+                mock(CircleId.class),
+                mock(CircleName.class),
+                user,
+                members
+        );
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                ()->circle.addMember(user));
+        assertEquals(exception.getMessage(), "정원 초과");
     }
 }
