@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserTest {
     private UserId id;
     private UserName name;
-    private User user;
 
     @Test
     public void failCreateUserWhenGivenNullId() {
