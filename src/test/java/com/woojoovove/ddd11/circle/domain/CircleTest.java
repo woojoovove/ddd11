@@ -68,4 +68,19 @@ public class CircleTest {
                 ()->circle.addMember(user));
         assertEquals(exception.getMessage(), "정원 초과");
     }
+
+    @Test
+    void throwWhenAddMemberGivenUnder30() {
+        User leader = mock(User.class);
+        Circle circle = Circle.create(
+                mock(CircleId.class),
+                mock(CircleName.class),
+                leader,
+                new ArrayList<>()
+        );
+        User member = mock(User.class);
+        circle.addMember(member);
+        assertEquals(1, circle.getMembers().size());
+        assertTrue(circle.getMembers().contains(member));
+    }
 }
