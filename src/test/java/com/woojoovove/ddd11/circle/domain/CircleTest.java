@@ -31,4 +31,12 @@ public class CircleTest {
         assertEquals(exception.getMessage(), "name cannot be null");
     }
 
+    @Test
+    void throwWhenCreateGivenLeaderNull() {
+        CircleId id = mock(CircleId.class);
+        CircleName name = mock(CircleName.class);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                ()-> Circle.create(id, name, null, new ArrayList<>()));
+        assertEquals(exception.getMessage(), "leader cannot be null");
+    }
 }
