@@ -24,7 +24,7 @@ public class CircleName {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj.getClass() != getClass() || obj == null) return false;
+        if (obj == null || obj.getClass() != getClass()) return false;
         CircleName circleName = (CircleName) obj;
         return circleName.getValue().equals(value);
     }
