@@ -61,4 +61,11 @@ public class CircleNameTest {
         CircleName sameName = new CircleName("circleName");
         assertEquals(circleName.hashCode(), sameName.hashCode());
     }
+
+    @Test
+    public void returnFalseWhenCompareGivenDifferentClass() {
+        CircleName circleName = new CircleName("circleName");
+        CircleId circleId = new CircleId("id");
+        assertFalse(circleName.equals(circleId));
+    }
 }
