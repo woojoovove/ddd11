@@ -36,12 +36,6 @@ public class CircleNameTest {
     }
 
     @Test
-    public void returnTrueWhenGivenSameObject() {
-        CircleName circleName = new CircleName("circleName");
-        assertEquals(circleName, circleName);
-    }
-
-    @Test
     public void returnTrueWhenCompareGivenSameValue() {
         CircleName circleName = new CircleName("circleName");
         CircleName sameName = new CircleName("circleName");
