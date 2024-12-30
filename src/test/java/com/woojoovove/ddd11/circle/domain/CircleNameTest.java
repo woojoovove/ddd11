@@ -36,12 +36,6 @@ public class CircleNameTest {
     }
 
     @Test
-    public void returnTrueWhenGivenSameObject() {
-        CircleName circleName = new CircleName("circleName");
-        assertEquals(circleName, circleName);
-    }
-
-    @Test
     public void returnTrueWhenCompareGivenSameValue() {
         CircleName circleName = new CircleName("circleName");
         CircleName sameName = new CircleName("circleName");
@@ -60,5 +54,18 @@ public class CircleNameTest {
         CircleName circleName = new CircleName("circleName");
         CircleName sameName = new CircleName("circleName");
         assertEquals(circleName.hashCode(), sameName.hashCode());
+    }
+
+    @Test
+    public void returnFalseWhenCompareGivenDifferentClass() {
+        CircleName circleName = new CircleName("circleName");
+        CircleId circleId = new CircleId("id");
+        assertFalse(circleName.equals(circleId));
+    }
+
+    @Test
+    public void returnFalseWhenCompareGivenNull() {
+        CircleName circleName = new CircleName("circleName");
+        assertFalse(circleName.equals(null));
     }
 }
