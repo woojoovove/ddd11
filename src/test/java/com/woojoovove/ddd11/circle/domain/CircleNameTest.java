@@ -68,4 +68,10 @@ public class CircleNameTest {
         CircleId circleId = new CircleId("id");
         assertFalse(circleName.equals(circleId));
     }
+
+    @Test
+    public void returnFalseWhenCompareGivenNull() {
+        CircleName circleName = new CircleName("circleName");
+        assertFalse(circleName.equals(null));
+    }
 }
