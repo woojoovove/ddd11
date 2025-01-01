@@ -4,11 +4,10 @@ import com.woojoovove.ddd11.circle.domain.Circle;
 import com.woojoovove.ddd11.circle.domain.CircleId;
 import com.woojoovove.ddd11.circle.domain.CircleName;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class InMemoryCircleRepository implements ICircleRepository {
-    private Map<CircleId, Circle> store = new HashMap<>();
+    private final Map<CircleId, Circle> store;
 
     public InMemoryCircleRepository(Map<CircleId, Circle> store) {
         this.store = store;
