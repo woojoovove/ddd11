@@ -10,6 +10,9 @@ import java.util.Map;
 public class InMemoryCircleRepository implements ICircleRepository {
     private Map<CircleId, Circle> store = new HashMap<>();
 
+    public InMemoryCircleRepository(Map<CircleId, Circle> store) {
+        this.store = store;
+    }
 
     @Override
     public Circle findByNameOrNull(CircleName circleName) {
