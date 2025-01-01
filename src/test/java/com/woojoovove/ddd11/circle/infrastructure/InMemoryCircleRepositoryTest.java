@@ -10,15 +10,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class InMemoryCircleRepositoryTest {
     private ICircleRepository circleRepository;
+    private Map<CircleId, Circle> store;
 
     @BeforeEach
     public void setUp() {
-        circleRepository = new InMemoryCircleRepository();
+        store = new HashMap<>();
+        circleRepository = new InMemoryCircleRepository(store);
     }
 
     @Test
@@ -50,5 +54,37 @@ public class InMemoryCircleRepositoryTest {
         CircleName circleName = new CircleName("circleName");
         Circle found = circleRepository.findByNameOrNull(circleName);
         assertNull(found);
+    }
+
+    @Test
+    public void returnCircleWhenFindByNameGivenExistingName() {
+        CircleName circleName = new CircleName("circleName");
+        CircleId circleId = new CircleId("circleId");
+        UserId userId = new UserId("userId");
+        UserName userName = new UserName("userName");
+        User user = User.create(userId, userName);
+        Circle circle = Circle.create(circleId, circleName, user, new ArrayList<>());
+        store.put(circleId, circle);
+
+        Circle result = circleRepository.findByNameOrNull(circleName);
+
+        assertNotNull(result);
+        assertEquals(result, circle);
+    }
+
+    @Test
+    public void returnCircleWhenFindByNameGivenNonExistingName() {
+        CircleName circleName = new CircleName("circleName");
+        CircleId circleId = new CircleId("circleId");
+        UserId userId = new UserId("userId");
+        UserName userName = new UserName("userName");
+        User user = User.create(userId, userName);
+        Circle circle = Circle.create(circleId, circleName, user, new ArrayList<>());
+        store.put(circleId, circle);
+
+        CircleName nonExistingName = new CircleName("non-existent");
+        Circle result = circleRepository.findByNameOrNull(nonExistingName);
+
+        assertNull(result);
     }
 }
