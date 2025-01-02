@@ -5,7 +5,7 @@ import com.woojoovove.ddd11.user.domain.UserId;
 import com.woojoovove.ddd11.user.domain.UserName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserDataTest {
     @Test
@@ -13,10 +13,23 @@ public class UserDataTest {
         UserId userId = new UserId("id");
         UserName userName = new UserName("name");
         User user = User.create(userId, userName);
-        User otherUser = User.create(userId, userName);
         UserData userData = new UserData(user);
+
+        UserId otherUserId = new UserId("id");
+        UserName otherUserName = new UserName("name");
+        User otherUser = User.create(otherUserId, otherUserName);
         UserData otherUserData = new UserData(otherUser);
 
-        assertEquals(userData, otherUserData);
+        assertTrue(userData.equals(otherUserData));
+    }
+
+    @Test
+    public void returnFalseWhenCompareGivenNull() {
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        UserData userData = new UserData(user);
+
+        assertFalse(userData.equals(null));
     }
 }
