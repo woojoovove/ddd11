@@ -87,4 +87,14 @@ public class UserDataTest {
 
         assertFalse(userData.equals(userId));
     }
+
+    @Test
+    public void returnTrueWhenCompareGivenSameObject() {
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        UserData userData = new UserData(user);
+
+        assertTrue(userData.equals(userData));
+    }
 }
