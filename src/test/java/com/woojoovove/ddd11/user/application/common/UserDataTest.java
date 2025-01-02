@@ -24,6 +24,21 @@ public class UserDataTest {
     }
 
     @Test
+    public void returnFalseWhenCompareGivenDifferentIdValue() {
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        UserData userData = new UserData(user);
+
+        UserId differentId = new UserId("id2");
+        UserName otherUserName = new UserName("name");
+        User otherUser = User.create(differentId, otherUserName);
+        UserData otherUserData = new UserData(otherUser);
+
+        assertFalse(userData.equals(otherUserData));
+    }
+
+    @Test
     public void returnFalseWhenCompareGivenNull() {
         UserId userId = new UserId("id");
         UserName userName = new UserName("name");
