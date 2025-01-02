@@ -32,4 +32,14 @@ public class UserDataTest {
 
         assertFalse(userData.equals(null));
     }
+
+    @Test
+    public void returnFalseWhenCompareGivenDifferentClass() {
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        UserData userData = new UserData(user);
+
+        assertFalse(userData.equals(userId));
+    }
 }
