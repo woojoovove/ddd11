@@ -97,4 +97,14 @@ public class UserDataTest {
 
         assertTrue(userData.equals(userData));
     }
+
+    @Test
+    public void hashCodeShouldBeConsistent(){
+        UserId userId = new UserId("id");
+        UserName userName = new UserName("name");
+        User user = User.create(userId, userName);
+        UserData userData = new UserData(user);
+
+        assertEquals(userData.hashCode(), userData.hashCode());
+    }
 }
