@@ -28,7 +28,7 @@ public class UserDataTest {
         User otherUser = User.create(otherUserId, otherUserName);
         UserData otherUserData = new UserData(otherUser);
 
-        assertTrue(userData.equals(otherUserData));
+        assertEquals(userData, otherUserData);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class UserDataTest {
         User otherUser = User.create(differentId, otherUserName);
         UserData otherUserData = new UserData(otherUser);
 
-        assertFalse(userData.equals(otherUserData));
+        assertNotEquals(userData, otherUserData);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class UserDataTest {
         User otherUser = User.create(otherUserId, differentUserName);
         UserData otherUserData = new UserData(otherUser);
 
-        assertFalse(userData.equals(otherUserData));
+        assertNotEquals(userData, otherUserData);
     }
 
     @Test
@@ -61,22 +61,22 @@ public class UserDataTest {
         User otherUser = User.create(differentUserId, differentUserName);
         UserData otherUserData = new UserData(otherUser);
 
-        assertFalse(userData.equals(otherUserData));
+        assertNotEquals(userData, otherUserData);
     }
 
     @Test
     public void returnFalseWhenCompareGivenNull() {
-        assertFalse(userData.equals(null));
+        assertNotEquals(userData, null);
     }
 
     @Test
     public void returnFalseWhenCompareGivenDifferentClass() {
-        assertFalse(userData.equals(userId));
+        assertNotEquals(userData, userId);
     }
 
     @Test
     public void returnTrueWhenCompareGivenSameObject() {
-        assertTrue(userData.equals(userData));
+        assertEquals(userData, userData);
     }
 
     @Test
